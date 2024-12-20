@@ -5,47 +5,54 @@ import HorizontalCard from "../components/HorizontalCard.astro";
 
 <BaseLayout title = "Projects" sideBarActiveItemID="projects">
   <div>
-    <div class="text-3xl w-full font-bold mb-5">Projects Header</div>
+    <div class="text-3xl w-full font-bold mb-5">My Projects</div>
   </div>
 
   <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
+    title="Monster Labs"
+    img="/monsterlabs.webp"
+    desc="Monster Labs is a SaaS platform that helps you create Dungeons & Dragons monsters, characters, and magic items. Live and serving real customers!"
+    url="https://monsterlabs.app"
+    badge="SaaS"
   />
   <div class="divider my-0"></div>
   <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
+    title="Journable"
+    img="/journable.webp"
+    desc="Winner of Best use of Machine Learning at the 2022 Calgary Hacks Hackathon. A modern journaling application powered by AI and machine learning to make writing journals more accessible for everyone."
+    url="https://devpost.com/software/journable"
+    badge="Hackathon"
   />
+  <div class="divider my-0"></div>
+  <HorizontalCard
+  title="Race Telemetry Dashboard"
+  img="/sr.webp"
+  desc="Created REST APIs in Go with MongoDB to add race car and user information, delivering historical and real-time data with user permissions. Built the front-end dashboard using TypeScript, React and Bootstrap."
+  url="https://github.com/UCalgaryRacing/STMDisplay"
+  badge="Data Visualization"
+/>
+<div class="divider my-0"></div>
+<HorizontalCard
+  title="Embedded Racecar Display"
+  img="/stm32.webp"
+  desc="Programmed a race car dashboard in embedded C using STM32 chipset with ARM processor for car diagnosis and racing display. Optimized performance through custom drawing and refreshing implementations."
+  url="https://github.com/UCalgaryRacing/STMDisplay"
+  badge="Embedded"
+/>
+<div class="divider my-0"></div>
+<HorizontalCard
+  title="Tabletop RPG Dice Roller"
+  img="/tth.webp"
+  desc="One of my first projects! A tabletop RPG dice roller and character builder built with React and Bootstrap. It's a simple and easy to use dice roller for your tabletop RPG needs."
+  url="https://arhamhumayun.github.io/Tabletop-Helper/#/dice"
+/>
+<div class="divider my-0"></div>
+<HorizontalCard
+  title="Minesweeper"
+  img="/minesweeper.webp"
+  desc="A complete remake of the classic Minesweeper game built with Pygame. One of my first projects exploring game development and Python programming."
+  url="https://github.com/arhamHumayun/Minesweeper"
+  badge="Game Development"
+/>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Projects Header</div>
-  </div>
-
-  <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 4"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 5"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
 </BaseLayout>

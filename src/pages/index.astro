@@ -1,60 +1,74 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import HorizontalCard from "../components/HorizontalCard.astro";
-import { getCollection } from "astro:content";
-import createSlug from "../lib/createSlug"
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HorizontalCard from '../components/HorizontalCard.astro';
+import { getCollection } from 'astro:content';
+import createSlug from '../lib/createSlug';
 
-const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 
-const last_posts = posts.slice(0, 3);
+const last_posts = posts.slice(0, 1);
 ---
 
 <BaseLayout sideBarActiveItemID="home">
-  <div class="pb-12 mt-5">
+  <div class="pb-12 mt-10">
     <div class="text-xl py-1">Hey there 👋</div>
-    <div class="text-5xl font-bold">I'm Manuel Ernesto</div>
-    <div class="text-3xl py-3 font-bold">Software Engineer and Entrepreneur</div>
+    <div class="text-5xl font-bold">I'm Arham Humayun</div>
+    <div class="text-3xl py-3 font-bold">Software Engineer and Tinkerer</div>
     <div class="py-2">
       <text class="text-lg">
-        This is <b>Astrofy</b> a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS.
-        Create in minutes a website with Blog, CV, Project Section, Store and RSS Feed. I hope you find
-        it useful!
+        Software Engineer with a passion for scalable systems, intuitive web
+        applications, and cutting-edge technology. I love working on AI-driven
+        projects and building tools that simplify complex problems. Always
+        learning, always improving, and excited to shape the future of tech.
       </text>
     </div>
     <div class="mt-8">
-      <a class="btn" href="https://twitter.com/manuelernestog" target="_blank"> Let's connect!</a>
-      <a href="https://github.com/manuelernestog/astrofy" target="_blank" class="btn btn-outline ml-5">
-        Get This template
-      </a>
+      <a
+        class="btn"
+        href="https://www.linkedin.com/in/arham-humayun"
+        target="_blank"
+      >
+        Let's connect!</a
+      >
     </div>
   </div>
 
   <div>
-    <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
+    <div class="text-3xl w-full font-bold mb-2">My latest projects {'</>'}</div>
   </div>
 
   <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
+    title="Monster Labs"
+    img="/monsterlabs.webp"
+    desc="Monster Labs is a SaaS platform that helps you create Dungeons & Dragons monsters, characters, and magic items. Live and serving real customers!"
+    url="https://monsterlabs.app"
+    badge="SaaS"
   />
   <div class="divider my-0"></div>
   <HorizontalCard
-    title="Demo Project 2"
+    title="Journable"
+    img="/journable.webp"
+    desc="Winner of Best use of Machine Learning at the 2022 Calgary Hacks Hackathon. A modern journaling application powered by AI and machine learning to make writing journals more accessible for everyone."
+    url="https://devpost.com/software/journable"
+    badge="Hackathon"
+  />
+  <div class="divider my-0"></div>
+  <!-- <HorizontalCard
+    title="AI Scribe"
     img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
+    desc="AI Scribe is a project I'm working on. It's a tool to help you dump your thoughts and let AI organize and recall them for you."
+    url="https://ai-scribe-iota.vercel.app"
+    badge="AI"
   />
   <div class="divider my-0"></div>
   <HorizontalCard
-    title="Demo Project 3"
+    title="Race Telemetry Dashboard"
     img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
-  />
+    desc="Built a comprehensive racing telemetry system featuring REST APIs in Go with MongoDB for historical and real-time data, and an embedded C dashboard for real-time car diagnostics using STM32 chipset. Includes a TypeScript/React frontend for data visualization."
+    badge="Full Stack"
+  /> -->
 
   <div>
     <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
@@ -67,7 +81,7 @@ const last_posts = posts.slice(0, 3);
           title={post.data.title}
           img={post.data.heroImage}
           desc={post.data.description}
-          url={"/blog/" + createSlug(post.data.title, post.slug)}
+          url={'/blog/' + createSlug(post.data.title, post.slug)}
           target="_self"
           badge={post.data.badge}
         />

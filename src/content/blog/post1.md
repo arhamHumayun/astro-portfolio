@@ -1,19 +1,18 @@
 ---
-title: "What I learned by creating my first SaaS"
-description: "A reflection on the key lessons and insights gained from building MonsterLabs, my first SaaS project"
+title: "Building Better AI Applications with Structured Output"
+description: "How I built MonsterLabs using structured object generation and what I learned about building SaaS products"
 pubDate: "Dec 21 2024"
 heroImage: "/monsterlabs.webp"
-tags: ["SaaS", "Product Development"]
+tags: ["AI", "SaaS", "Product Development"]
 ---
 
-One of things I wanted to do in 2024 was to build a software product that actually made money. I've been working on MonsterLabs for a few months now and I'm proud to say that MonsterLabs is now live and serving real customers!
+One of my goals for 2024 was to build a software product that actually made money. I've been working on MonsterLabs, an AI-powered platform for generating custom Dungeons & Dragons monsters and magic items. While building this project, I learned a lot about structured object generation with AI and how to build a successful SaaS product. Let me share what I've learned.
 
-Monsterlabs is an AI-powered platform for generating custom Dungeons & Dragons monsters and magic items. It's a project that allowed me to blend my love for gaming with my passion for development, and along the way, I picked up invaluable lessons and skills. Here's a look at what I learned while turning this idea into reality.
+## The Power of Structured Output in AI Applications
 
-## OpenAI and structured output
-The most important part of MonsterLabs is the AI generation. I wanted to make sure that the AI was able to generate the best possible results, so I spent a lot of time researching how to structure the data in a way that would be easy for the AI to understand. I've found that the best way to do this is to use either function calling or structured output. Strucuted outputs weren't out yet when I started this project, so I had to use function calling. Function calling is a bit of a misnomer, as the AI model isn't actually calling a function, but rather returning a JSON object which follows a specific schema, which you then could use to call a function. 
+When building AI-powered applications, one of the most critical aspects is ensuring consistent, reliable output from the AI model. I've found that structured output (or function calling) is absolutely crucial for this. While structured outputs weren't available when I started MonsterLabs, I used function calling, which essentially involves getting the AI to return a JSON object that follows a specific schema.
 
-It's important to get your data structure correct, consistent and easy for the AI to understand. Zod is a great library for this. Here's a snippet of what I'm talking about:
+The key to success here is creating a well-defined, consistent data structure that the AI can easily understand. I used Zod for schema validation, and it's been a game-changer. Here's a practical example from MonsterLabs:
 
 ``` typescript
 import { z } from 'zod';
@@ -38,14 +37,19 @@ export const itemSchema = z.object({
 });
 ```
 
-As you can see, the schema is quite detailed so that the AI can generate the best possible results. Using unions and literals is a great technique to ensure that you can really narrow down the options for the AI. Also, using the `describe` method is a great way to help the AI understand the data structure.
+Some key lessons I learned about structured output:
 
-## NextJS optimizations
+1. Use unions and literals to strictly define possible values
+2. Leverage the `describe` method to provide clear context to the AI
+3. Make your schema as detailed as possible while keeping it logical
+4. Use nullable fields when appropriate to handle edge cases
+5. Structure nested objects carefully to maintain consistency
 
-I've also learned a lot about NextJS optimizations. NextJS has the ability cache API responses and use ISR (Incremental Static Regeneration) to speed up the page load times. An example of where this is applied is in any page where you're looking at a single monster or magic item. The first time that page is loaded, the API response is cached and on subsequent loads, the cached response is used. This means that we can skip the API call and just render the page almost instantly. Try it out for yourself by looking at the page for a single monster or magic item [here](https://monsterlabs.app/creature/view/18).
+## Optimizing the Application
 
-## Data fetching optimizations
-Since all of data for the site is stored in postgres, we need to make sure that we're fetching the data in the most efficient way possible. One easy trick is to run multiple database queries concurrently using Promise.allSettled() rather than waiting for them to complete one after another. Here's an example of how this can be done:
+While building MonsterLabs, I also learned valuable lessons about application optimization. NextJS's caching and ISR (Incremental Static Regeneration) capabilities were crucial for performance. For example, when viewing a single monster or magic item, we cache the API response and serve it instantly on subsequent loads.
+
+Data fetching optimization was another important aspect. Here's a practical example of concurrent database queries:
 
 ``` typescript
 // Both of these queries will run concurrently
@@ -59,13 +63,17 @@ const monsters = await db.query('SELECT * FROM monsters');
 const items = await db.query('SELECT * FROM items');
 ```
 
-## Marketing
-I mainly used Reddit to get the word out about MonsterLabs. I created posts about them on various DnD subreddits (The ones that allowed it) and made a post on [Product Hunt](https://www.producthunt.com/products/monster-labs). I also got a few friends to test the site and give me feedback. This is one area that I still have to improve on, but for a first public release, I'm happy with the results. Especially considering how niche the product is, and how much time I've spent on it.
+## The SaaS Journey
 
-## First real customers
-This may not sound like a big deal, but getting your first real customers is a huge milestone. It's a great feeling to know that people are actually using your product and finding value in it. It's also a great feeling to know that you're actually making money from your work. Granted as of the time of writing this, I have 2 customers on the monthly plan, but the fact that they're paying me money for something I've created is a great feeling.
+While the technical aspects of building with AI were fascinating, the journey of creating a SaaS product was equally enlightening. I focused on marketing through Reddit and Product Hunt, targeting DnD communities that would find value in MonsterLabs. Getting my first real customers was a huge milestone - seeing people actually use and pay for something I created was incredibly rewarding.
+
 ![Net income from Stripe](../../../public/stripe-moneys.webp)
 
 ## Conclusion
 
-I've learned a lot by creating MonsterLabs and I'm proud of what I've achieved. This post is a very small section of what I've learned, otherwise this blog post would be a book. I'm looking forward to continuing to work on MonsterLabs and see where it takes me.
+Building MonsterLabs taught me that success in AI-powered applications comes from three main factors:
+1. Well-structured data and clear schemas
+2. Optimized application performance
+3. Understanding your market and users
+
+While I've only scratched the surface of what I've learned (this could easily be a book!), these insights have been invaluable. I'm excited to continue improving MonsterLabs and sharing more lessons learned along the way.
